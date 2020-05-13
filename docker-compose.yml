@@ -1,0 +1,64 @@
+version: "3"
+services:
+  redis:
+    image: library/redis:5.0
+    container_name: quant_redis
+    restart: always
+    command: /bin/bash -c "/usr/bin/redis-server"
+    user: root
+    volumes:
+      - "./docker/redis/redis.conf:/etc/redis/redis.conf"
+
+
+  mysql:
+    image: library/mysql:5.7
+    container_name: quant_mysql
+    restart: always
+    environment:
+      MYSQL_USER: 'mgw'
+      MYSQL_PASSWORD: 'mgw'
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'quant_platform'
+    ports:
+      - 3306:3306
+    volumes:
+      - "./docker/mysql/db:/var/lib/mysql"
+      - "./docker/mysql/conf:/etc/my.cnf"
+      - "./docker/mysql/logs:/var/log/mysql/"
+      - "./docker/mysql/init:/docker-entrypoint-initdb.d/"
+
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./docker/backend/Dockerfile
+    container_name: quant_backend
+    restart: always
+    volumes:
+      - ".:/djangoTest"
+    links:
+      - mysql
+      - redis
+    depends_on:
+      - mysql
+      - redis
+
+
+  nginx:
+    image: nginx:1.11.6-alpine
+    container_name: quant_nginx
+    restart: always
+    volumes:
+      - "./docker/nginx/nginx.conf:/etc/nginx/nginx.conf"
+      - "./docker/nginx/conf.d:/etc/nginx/conf.d"
+      - "./docker/nginx/log:/var/log/nginx"
+      - "./docker/nginx/www:/var/www"
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=80
+    ports:
+      - 8080:80
+      - 80:80
+      - 443:443
+    links:
+      - backend

@@ -1,0 +1,18 @@
+version: "3"
+services:
+  mysql:
+    image: library/mysql:5.7
+    container_name: quant_mysql
+    restart: always
+    environment:
+      MYSQL_USER: 'mgw'
+      MYSQL_PASSWORD: 'mgw'
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'quant_platform'
+    ports:
+      - 3306:3306
+    volumes:
+        - "./mysql/db:/var/lib/mysql"
+        - "./mysql/conf:/etc/my.cnf"
+        - "./mysql/logs:/var/log/mysql/"
+        - "./mysql/init:/docker-entrypoint-initdb.d/"
