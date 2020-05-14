@@ -1,6 +1,14 @@
 # docker-compose-base-template
 a docker-compose demo
 
+![python](https://img.shields.io/badge/python-3.7.7-green)
+![django](https://img.shields.io/badge/django-3.0.5-green)
+![docker](https://img.shields.io/badge/docker-19.03.8-yellowgreen)
+![docker-compose](https://img.shields.io/badge/docker--compose-1.21.2-orange)
+![mysql](https://img.shields.io/badge/mysql-5.7-blue)
+![nginx](https://img.shields.io/badge/nginx-1.11.6-yellowgreen)
+![redis](https://img.shields.io/badge/redis-5.0-red)
+
 ## 1. 运行
 
 ```dockerfile
