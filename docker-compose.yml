@@ -61,7 +61,6 @@ services:
       - NGINX_PORT=80
     ports:
       - 8000:80
-      - 443:443
     links:
       - backend
     depends_on:

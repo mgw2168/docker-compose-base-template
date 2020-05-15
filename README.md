@@ -10,7 +10,16 @@ a docker-compose demo
 ![redis](https://img.shields.io/badge/redis-5.0-red)
 
 ## 1. 运行
+docker及docker-compose 安装略
 
+1.写入阿里云镜像软件源
+```
+add-apt-repository \
+   "deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu \
+    $(lsb_release -cs) \
+    stable"
+```
+2.运行
 ```dockerfile
 docker-compose -f docker-compose.yml up -d --build
 ```
