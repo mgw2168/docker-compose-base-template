@@ -13,5 +13,4 @@ do
     sleep 2
 done
 
-python manage.py loaddata fixtures.json --settings=djangoTest.settings
 python manage.py runserver --settings=djangoTest.settings
