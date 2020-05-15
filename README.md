@@ -12,14 +12,25 @@ a docker-compose demo
 ## 1. 运行
 docker及docker-compose 安装略
 
-1.写入阿里云镜像软件源
+#### 1.配置国内镜像源
+
+##### 创建或者修改：
+
+`/etc/docker/daemon.json` 加入以下内容：
 ```
-add-apt-repository \
-   "deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu \
-    $(lsb_release -cs) \
-    stable"
+{
+"registry-mirrors": [
+"https://kfwkfulq.mirror.aliyuncs.com",
+"https://2lqq34jg.mirror.aliyuncs.com",
+"https://pee6w651.mirror.aliyuncs.com",
+"https://registry.docker-cn.com",
+"http://hub-mirror.c.163.com"
+],
+"dns": ["8.8.8.8","8.8.4.4"]
+}
+
 ```
-2.运行
+##### 2.运行
 ```dockerfile
 docker-compose -f docker-compose.yml up -d --build
 ```
