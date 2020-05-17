@@ -21,7 +21,7 @@ services:
       MYSQL_ROOT_PASSWORD: 'root'
       MYSQL_DATABASE: 'quant_platform'
     ports:
-      - 3308:3306
+      - 3306:3306
     volumes:
       - "./docker/mysql/db:/var/lib/mysql"
       - "./docker/mysql/conf:/etc/my.cnf"

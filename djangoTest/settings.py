@@ -81,7 +81,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'quant_platform',
-        'HOST': 'localhost',
+        'HOST': 'mysql',  # mysql容器
         'USER': 'root',
         'PASSWORD': 'root',
         'PORT': '3306',
