@@ -10,4 +10,5 @@ COPY ./requirements.txt /djangoTest/requirements.txt
 WORKDIR /djangoTest
 
 RUN chmod 777 /django-entrypoint.sh
+RUN pip install uwsgi -i https://pypi.tuna.tsinghua.edu.cn/simple/
 RUN pip install --default-timeout=1000 --no-cache-dir -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/

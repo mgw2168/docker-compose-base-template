@@ -39,8 +39,7 @@ services:
     restart: always
     volumes:
       - ".:/djangoTest"
-    entrypoint:
-      - /django-entrypoint.sh
+    command: bash -c "uwsgi --ini /djangoTest/conf/uwsgi.ini"
     expose:
       - 8000
     links:
