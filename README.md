@@ -19,19 +19,19 @@ docker及docker-compose 安装略
 `/etc/docker/daemon.json` 加入以下内容：
 ```
 {
-"registry-mirrors": [
-"https://kfwkfulq.mirror.aliyuncs.com",
-"https://2lqq34jg.mirror.aliyuncs.com",
-"https://pee6w651.mirror.aliyuncs.com",
-"https://registry.docker-cn.com",
-"http://hub-mirror.c.163.com"
-],
-"dns": ["8.8.8.8","8.8.4.4"]
+    "registry-mirrors": [
+        "https://kfwkfulq.mirror.aliyuncs.com",
+        "https://2lqq34jg.mirror.aliyuncs.com",
+        "https://pee6w651.mirror.aliyuncs.com",
+        "https://registry.docker-cn.com",
+        "http://hub-mirror.c.163.com"
+     ],
+    "dns": ["8.8.8.8","8.8.4.4"]
 }
 
 ```
 ##### 2.运行
-```dockerfile
+```
 docker-compose -f docker-compose.yml up -d --build
 ```
 
