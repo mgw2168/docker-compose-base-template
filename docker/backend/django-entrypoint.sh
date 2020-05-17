@@ -13,4 +13,4 @@ do
     sleep 2
 done
 
-python manage.py runserver --settings=djangoTest.settings
+python manage.py runserver 0.0.0.0:8000 --settings=djangoTest.settings

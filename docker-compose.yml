@@ -7,6 +7,8 @@ services:
     user: root
     volumes:
       - "./docker/redis/redis.conf:/etc/redis/redis.conf"
+    networks:
+      - web_net
 
 
   mysql:
@@ -19,12 +21,14 @@ services:
       MYSQL_ROOT_PASSWORD: 'root'
       MYSQL_DATABASE: 'quant_platform'
     ports:
-      - 3306:3306
+      - 3308:3306
     volumes:
       - "./docker/mysql/db:/var/lib/mysql"
       - "./docker/mysql/conf:/etc/my.cnf"
       - "./docker/mysql/logs:/var/log/mysql/"
       - "./docker/mysql/init:/docker-entrypoint-initdb.d/"
+    networks:
+      - web_net
 
 
   backend:
@@ -45,6 +49,8 @@ services:
     depends_on:
       - mysql
       - redis
+    networks:
+      - web_net
 
 
   nginx:
@@ -60,8 +66,15 @@ services:
       - NGINX_HOST=localhost
       - NGINX_PORT=80
     ports:
-      - 8000:80
+      - 80:80
     links:
       - backend
     depends_on:
       - backend
+    networks:
+      - web_net
+
+
+networks:
+  web_net:
+    driver: bridge
