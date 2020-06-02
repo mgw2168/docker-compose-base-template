@@ -1,6 +1,8 @@
 # docker-compose-base-template
 a docker-compose demo
 
+[![Build Status](https://travis-ci.org/mgw2168/docker-compose-base-template.svg?branch=master)](https://travis-ci.org/mgw2168/docker-compose-base-template)
+
 ![python](https://img.shields.io/badge/python-3.7.7-green)
 ![django](https://img.shields.io/badge/django-3.0.5-green)
 ![docker](https://img.shields.io/badge/docker-19.03.8-yellowgreen)
